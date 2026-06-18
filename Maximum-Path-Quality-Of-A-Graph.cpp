@@ -4,14 +4,14 @@ void backtracking(vector<pair<int, int>> adj[], vector<int> &values, bool visite
         int addedTime = neighbors.second;
         if(time + addedTime > maxTime) continue;
         time += addedTime;
-        bool mudou = false;
+        bool changed = false;
         if(!visited[neighbors.first]) {
             quality += values[neighbors.first];
-            mudou = true;
+            changed = true;
         }
         visited[neighbors.first] = true;
         backtracking(adj, values, visited, neighbors.first, time, maxTime, quality, maxQuality);
-        if(mudou) {
+        if(changed) {
             quality -= values[neighbors.first];
             visited[neighbors.first] = false;
         }
